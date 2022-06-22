@@ -24,7 +24,7 @@ var twoSum = function (nums, target) {
  * @param {nums[]} nums
  * @param {number} target
  * @returns {number[]}
- * @complexies Time => O(nlogn) | Space => O(n)
+ * @complexities Time => O(nlogn) | Space => O(n)
  */
 var twoSum = function (nums, target) {
   const twoSumIndex = []
@@ -47,7 +47,7 @@ var twoSum = function (nums, target) {
   while (leftPointer < rightPointer) {
     let sum = nums[leftPointer] + nums[rightPointer]
     if (sum === target) {
-      // We found the target but we need to get the index before the array was sorted, so pass the nums value to the hashTable and get the original index and remove the obtained index from the hashTable to deal with duplicates
+      // We found the target but we need to get the index before the array was sorted, // so pass the nums value to the hashTable and get the original index and remove // the obtained index from the hashTable to deal with duplicates
       const hashLengthLeft = hashTable[nums[leftPointer]].length
       twoSumIndex.push(hashTable[nums[leftPointer]][hashLengthLeft - 1])
       hashTable[nums[leftPointer]].splice(hashLengthLeft - 1, 1)
@@ -70,14 +70,14 @@ var twoSum = function (nums, target) {
  * @param {@nums[]} nums
  * @param {@number} target
  * @returns {number[]}
- * @complexies Time => O(n^2) | Space => O(1)
+ * @complexities Time => O(n^2) | Space => O(1)
  */
 var twoSum = function (nums, target) {
   const length = nums.length
   // Loop through each value of i
   for (let i = 0; i < length; i++) {
-    // Loop through each value of j and add to the i value and check if it sums to the target,
-    // If yes then return the i and j value
+    // Loop through each value of j and add to the i value and check if
+    // it sums to the target, If yes then return the i and j value
     for (let j = i + 1; j < length; j++) {
       // Found the target
       if (nums[i] + nums[j] === target) {
