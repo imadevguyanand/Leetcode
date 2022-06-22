@@ -1,0 +1,3 @@
+# Leetcode Solutions for Tech Interviews
+
+I write solutions in mostly Javascript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="15" height="20" alt="Javascript" /></a> and PHP <a href="https://www.php.net/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/php-colored.svg" width="25" height="25" alt="PHP" /></a>. Please feel free to create a folder in the root directory in your favourite language if it doesn't exist and create a pull request.
