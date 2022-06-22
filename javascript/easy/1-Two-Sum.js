@@ -47,7 +47,9 @@ var twoSum = function (nums, target) {
   while (leftPointer < rightPointer) {
     let sum = nums[leftPointer] + nums[rightPointer]
     if (sum === target) {
-      // We found the target but we need to get the index before the array was sorted, // so pass the nums value to the hashTable and get the original index and remove // the obtained index from the hashTable to deal with duplicates
+      // We found the target but we need to get the index before the array was sorted,
+      // so pass the nums value to the hashTable and get the original index and remove
+      // the obtained index from the hashTable to deal with duplicates
       const hashLengthLeft = hashTable[nums[leftPointer]].length
       twoSumIndex.push(hashTable[nums[leftPointer]][hashLengthLeft - 1])
       hashTable[nums[leftPointer]].splice(hashLengthLeft - 1, 1)
