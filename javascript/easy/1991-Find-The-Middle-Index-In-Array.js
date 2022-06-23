@@ -30,4 +30,9 @@ var findMiddleIndex = function (nums) {
   return -1
 }
 
-console.log(findMiddleIndex([2, 5]))
+let array = [2, 3, -1, 8, 4]
+console.log(findMiddleIndex(array)) // prints 3
+
+let leftArray = [2, 5, 4, 12, 16]
+let rightArray = [16, 14, 11, 12, 4]
+// Now the value 12 is at the same index in both left and right array. The result is 3 which is the index
