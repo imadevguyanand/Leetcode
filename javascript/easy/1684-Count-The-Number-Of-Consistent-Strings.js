@@ -2,6 +2,8 @@
  * @param {string} allowed
  * @param {string[]} words
  * @return {number}
+ * @complexities Time => O(n^2) | Space => O(n)
+ * @description HashTable and Bit manipulation
  */
 const countConsistentStrings = (allowed, words) => {
   const hashTable = []
@@ -12,13 +14,15 @@ const countConsistentStrings = (allowed, words) => {
     hashTable[allowed[i]] = true
   }
   for (let i = 0; i < wordsLength; i++) {
-    let exists = true
-    for (let j = 0; j < words[i].length; j++) {
-      if (!(words[i][j] in hashTable)) {
-        exists = false
+    let charExists = true
+    const wordLength = words[i].length
+    for (let j = 0; j < wordLength; j++) {
+      let char = words[i][j]
+      if (!(char in hashTable)) {
+        charExists = false
       }
     }
-    if (exists === true) {
+    if (charExists === true) {
       consistentStringCount++
     }
   }
