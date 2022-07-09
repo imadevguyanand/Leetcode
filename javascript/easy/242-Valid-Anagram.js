@@ -2,6 +2,8 @@
  * @param {string} s
  * @param {string} t
  * @return {boolean}
+ * @complexities Time => O(n) | Space => O(n)
+ * @description HashTable
  */
 var isAnagram = function (s, t) {
   // If the string length doesn't match then its not an anagram
