@@ -1,8 +1,8 @@
 /**
  * @param {number} n
  * @return {number}
- * @complexities Time => O(n^2) | Space => O(1)
- * @description Math
+ * @complexities Time => O(n sqrt(n)) | Space => O(1)
+ * @description Math Brute Force
  */
 var countPrimes = function (n) {
   if (n <= 2) {
@@ -21,7 +21,6 @@ var countPrimes = function (n) {
     }
     if (prime) {
       noOfPrimes++
-      console.log(number)
     }
   }
   return noOfPrimes
@@ -30,28 +29,23 @@ var countPrimes = function (n) {
 /**
  * @param {number} n
  * @return {number}
- * @complexities Time => O(n) | Space => O(1)
- * @description Math
+ * @complexities Time => O(nlog(logn)) | Space => O(n)
+ * @description Math and Logic
  */
 var countPrimes = function (n) {
-  if (n <= 2) {
-    return 0
-  }
   const primes = new Array(n)
   for (let i = 2; i * i < n; i++) {
-    if (!primes[i]) {
-      for (let j = i; j * i < primes.length; j++) {
-        primes[i * j] = true
-      }
+    for (let j = i; j * i < n; j++) {
+      primes[i * j] = true
     }
   }
-  let noOfPrimes = 0
-  for (let i = 2; i < primes.length; i++) {
+  let primeCount = 0
+  for (let i = 2; i < n; i++) {
     if (!primes[i]) {
-      noOfPrimes++
+      primeCount++
     }
   }
-  return noOfPrimes
+  return primeCount
 }
 
 console.log(countPrimes(100))
