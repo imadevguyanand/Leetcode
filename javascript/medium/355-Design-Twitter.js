@@ -45,6 +45,7 @@ class Twitter {
     }
     const result = []
     if (tweets.length > 0) {
+      // Sort the tweets based on the count of the tweets
       tweets.sort((a, b) => b[1] - a[1])
       let count = 0
       while (count < this.maxTweets && count < tweets.length) {
@@ -60,6 +61,8 @@ class Twitter {
    * @param {number} followerId
    * @param {number} followeeId
    * @return {void}
+   * @complexities Time => O(n) | Space => O(n), where n is the number of followers
+   * @description HashTable
    */
   follow(followerId, followeeId) {
     if (!(followerId in this.followersTable)) {
@@ -79,6 +82,8 @@ class Twitter {
    * @param {number} followerId
    * @param {number} followeeId
    * @return {void}
+   * @complexities Time => O(n) | Space => O(n), where n is the number of followers
+   * @description HashTable
    */
   unfollow(followerId, followeeId) {
     if (!(followerId in this.followersTable)) {
