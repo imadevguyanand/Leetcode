@@ -1,57 +1,65 @@
 /**
  * @param {number} numCourses
  * @param {number[][]} prerequisites
- * @return {boolean}
+ * @return {number[]}
+ * @complexities Time => O(e + v) | Space => O(n), where e is the edges and v is the vertices
+ * @descripition HashTable and DFS
  */
-var canFinish = function (numCourses, prerequisites) {
-  const preMap = {}
+var findOrder = function (numCourses, prerequisites) {
+  const preMapHashTable = {}
+  const order = []
   const visited = []
   for (let i = 0; i < numCourses; i++) {
-    preMap[i] = []
+    preMapHashTable[i] = []
   }
 
-  for (const value of prerequisites) {
-    const course = value[0]
-    const prerequisite = value[1]
-    preMap[course].push(prerequisite)
+  for (const pre of prerequisites) {
+    let course = pre[0]
+    let prequisite = pre[1]
+    preMapHashTable[course].push(prequisite)
   }
 
-  for (let course = 0; course < numCourses; course++) {
-    const canfinish = DFS(course, preMap, visited)
-    if (!canfinish) {
-      return false
+  for (const course in preMapHashTable) {
+    const isCyclic = depthFirstSearch(course, visited, preMapHashTable, order)
+    if (!isCyclic) {
+      return []
     }
   }
-  return true
+
+  return order
 }
 
-const DFS = (course, preMap, visited) => {
+const depthFirstSearch = (course, visited, preMapHashTable, order) => {
   if (visited[course]) {
     return false
   }
-  if (preMap[course].length === 0) {
+
+  if (preMapHashTable[course].length === 0) {
+    if (!order.includes(+course)) {
+      order.push(+course)
+    }
     return true
   }
 
   visited[course] = true
-  for (const neighbor of preMap[course]) {
-    const canFinish = DFS(neighbor, preMap, visited)
-    if (!canFinish) {
+  for (const neigbour of preMapHashTable[course]) {
+    const isCyclic = depthFirstSearch(neigbour, visited, preMapHashTable, order)
+    if (!isCyclic) {
       return false
     }
   }
 
   visited[course] = false
-  preMap[course] = []
+  preMapHashTable[course] = []
+
   return true
 }
 
 console.log(
-  canFinish(5, [
-    [0, 1],
-    [0, 2],
-    [1, 3],
-    [1, 4],
-    [3, 4],
+  findOrder(4, [
+    [1, 0],
+    [2, 0],
+    [3, 1],
+    [3, 2],
   ])
 )
