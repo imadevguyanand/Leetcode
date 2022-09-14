@@ -11,10 +11,9 @@ const ladderLength = (beginWord, endWord, wordList) => {
   }
   const hashTable = {}
   wordList.push(beginWord)
-
   for (const word of wordList) {
     for (let i = 0; i < word.length; i++) {
-      const pattern = word.slice(0, i) + "*" + word.slice(i + 1, word.length)
+      let pattern = word.slice(0, i) + "*" + word.slice(i + 1, word.length)
       if (!(pattern in hashTable)) {
         hashTable[pattern] = [word]
       } else {
@@ -27,19 +26,16 @@ const ladderLength = (beginWord, endWord, wordList) => {
   const queue = [beginWord]
   const visited = [beginWord]
   while (queue.length) {
-    for (let x = 0; x < queue.length; x++) {
+    const levelSize = queue.length
+    for (let x = 0; x < levelSize; x++) {
       const word = queue.shift()
-      if (word === endWord) {
-        return wordCount
-      }
-      for (let i = 0; i < word.length; i++) {
-        const pattern = word.slice(0, i) + "*" + word.slice(i + 1, word.length)
-        for (const newWord of hashTable[pattern]) {
-          if (newWord in visited) {
-            continue
-          }
-          visited[newWord] = true
-          queue.push(newWord)
+      if (word === endWord) return wordCount
+      for (let x = 0; x < word.length; x++) {
+        const pattern = word.slice(0, x) + "*" + word.slice(x + 1)
+        for (let nei of hashTable[pattern]) {
+          if (nei in visited) continue
+          visited[nei] = true
+          queue.push(nei)
         }
       }
     }
