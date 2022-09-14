@@ -26,7 +26,6 @@ const ladderLength = (beginWord, endWord, wordList) => {
   let wordCount = 1
   const queue = [beginWord]
   const visited = [beginWord]
-  // O(n^2 * m)
   while (queue.length) {
     for (let x = 0; x < queue.length; x++) {
       const word = queue.shift()
@@ -50,4 +49,4 @@ const ladderLength = (beginWord, endWord, wordList) => {
 }
 
 console.log(ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
-console.log(ladderLength("red", "tax", ["ted", "tex", "tax", "tad", "den", "rex", "pee"]))
+//console.log(ladderLength("red", "tax", ["ted", "tex", "tax", "tad", "den", "rex", "pee"]))
